@@ -1,0 +1,2018 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family: Georgia, serif;
+
+    background: #020207;
+
+}
+
+
+/* =========================================
+   FONDO
+========================================= */
+
+.fondo {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -10;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            #f90086,
+            #87004c 40%,
+            #1b0015 80%
+        );
+
+}
+
+
+.fondo::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 20%,
+            rgba(0,0,0,.8) 85%
+        );
+
+}
+
+
+/* =========================================
+   BURBUJAS
+========================================= */
+
+.burbujas {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.2) 0 10px,
+            transparent 40px
+        ),
+
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(255,80,190,.5) 0 12px,
+            transparent 50px
+        ),
+
+        radial-gradient(
+            circle at 70% 75%,
+            rgba(255,0,150,.4) 0 15px,
+            transparent 55px
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,100,200,.3) 0 10px,
+            transparent 50px
+        );
+
+    filter: blur(8px);
+
+    animation: luces 5s infinite alternate;
+
+}
+
+
+@keyframes luces {
+
+    from {
+        opacity: .5;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
+   CORAZONES
+========================================= */
+
+.corazones {
+
+    position: absolute;
+
+    inset: 0;
+
+    color: rgba(255,160,220,.35);
+
+    font-size: 45px;
+
+    letter-spacing: 30px;
+
+    line-height: 100px;
+
+    animation: corazones 12s infinite ease-in-out;
+
+}
+
+
+@keyframes corazones {
+
+    0% {
+        transform: translateY(20px);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+
+    100% {
+        transform: translateY(20px);
+    }
+
+}
+
+
+/* =========================================
+   BIENVENIDA
+========================================= */
+
+#bienvenida {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    transition: 1s;
+
+}
+
+
+.bienvenida-contenido {
+
+    color: white;
+
+    animation: aparecer 2s ease;
+
+}
+
+
+.corazon-grande {
+
+    color: #ffb4df;
+
+    font-size: 90px;
+
+    text-shadow:
+
+        0 0 10px #ff4eb5,
+        0 0 30px #ff008c;
+
+    animation: latido 1.8s infinite;
+
+}
+
+
+@keyframes latido {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+
+.pequeno {
+
+    color: #ffc8e9;
+
+    font-size: 16px;
+
+    margin-top: 15px;
+
+}
+
+
+.bienvenida-contenido h1 {
+
+    margin-top: 10px;
+
+    font-family: cursive;
+
+    font-size: clamp(45px, 10vw, 65px);
+
+    color: #fff;
+
+    text-shadow:
+
+        0 0 10px #ff43ae,
+        0 0 30px #ff008c;
+
+}
+
+
+.subtexto {
+
+    margin-top: 15px;
+
+    color: #ffd8ee;
+
+}
+
+
+#entrar {
+
+    margin-top: 35px;
+
+    padding: 13px 40px;
+
+    border: 1px solid #ffb1dd;
+
+    border-radius: 30px;
+
+    background: rgba(255,0,130,.12);
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 15px rgba(255,0,150,.6);
+
+    transition: .3s;
+
+}
+
+
+#entrar:hover {
+
+    background: #ff1795;
+
+    transform: scale(1.08);
+
+}
+
+
+/* =========================================
+   PANTALLA FLORES
+========================================= */
+
+#flores {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(10,15,30,.2),
+            rgba(0,0,0,.95) 80%
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 1s;
+
+}
+
+
+#flores.activa {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* =========================================
+   TITULO
+========================================= */
+
+.titulo {
+
+    margin-top: 30px;
+
+    color: #ffd400;
+
+    font-family: cursive;
+
+    font-size: clamp(40px, 9vw, 62px);
+
+    line-height: .9;
+
+    text-shadow:
+
+        0 0 5px #fff000,
+        0 0 15px #ffd000,
+        0 0 30px #ff9c00;
+
+    animation: brilloTitulo 2s infinite alternate;
+
+}
+
+
+.titulo span {
+
+    display: block;
+
+    font-size: .75em;
+
+    margin-top: 10px;
+
+}
+
+
+@keyframes brilloTitulo {
+
+    from {
+        filter: brightness(.9);
+    }
+
+    to {
+        filter: brightness(1.4);
+    }
+
+}
+
+
+/* =========================================
+   ESTRELLAS
+========================================= */
+
+.estrellas {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+.estrellas i {
+
+    position: absolute;
+
+    color: #ffe500;
+
+    font-style: normal;
+
+    text-shadow:
+
+        0 0 5px #ffd000,
+        0 0 15px #ffd000;
+
+    animation: estrella 2s infinite alternate;
+
+}
+
+
+.estrellas i:nth-child(1) {
+    top: 25%;
+    left: 20%;
+}
+
+
+.estrellas i:nth-child(2) {
+    top: 32%;
+    right: 22%;
+}
+
+
+.estrellas i:nth-child(3) {
+    top: 47%;
+    left: 14%;
+}
+
+
+.estrellas i:nth-child(4) {
+    top: 52%;
+    right: 17%;
+}
+
+
+.estrellas i:nth-child(5) {
+    top: 62%;
+    left: 25%;
+}
+
+
+.estrellas i:nth-child(6) {
+    top: 40%;
+    right: 30%;
+}
+
+
+.estrellas i:nth-child(7) {
+    top: 72%;
+    left: 20%;
+}
+
+
+.estrellas i:nth-child(8) {
+    top: 67%;
+    right: 25%;
+}
+
+
+@keyframes estrella {
+
+    from {
+        opacity: .1;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+}
+
+
+/* =========================================
+   ESCENA
+========================================= */
+
+.escena {
+
+    position: relative;
+
+    width: 320px;
+
+    height: 380px;
+
+    margin-top: 5px;
+
+}
+
+
+/* =========================================
+   CAMPANA
+========================================= */
+
+.campana {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 65px;
+
+    transform: translateX(-50%);
+
+    width: 165px;
+
+    height: 260px;
+
+    border:
+
+        2px solid rgba(
+            190,
+            220,
+            255,
+            .25
+        );
+
+    border-bottom: none;
+
+    border-radius:
+
+        90px
+        90px
+        0
+        0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.02),
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.01)
+        );
+
+    box-shadow:
+
+        inset 12px 0 20px
+        rgba(255,255,255,.05),
+
+        inset -12px 0 20px
+        rgba(255,255,255,.04);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   REFLEJO
+========================================= */
+
+.reflejo {
+
+    position: absolute;
+
+    width: 22px;
+
+    height: 190px;
+
+    left: 25px;
+
+    top: 35px;
+
+    background:
+
+        linear-gradient(
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    border-radius: 50%;
+
+    transform: rotate(8deg);
+
+    filter: blur(2px);
+
+}
+
+
+/* =========================================
+   TAPA
+========================================= */
+
+.boton-campana {
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 12px;
+
+    left: 50%;
+
+    top: -8px;
+
+    transform: translateX(-50%);
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    border-radius: 50%;
+
+}
+
+
+/* =========================================
+   FLOR
+========================================= */
+
+.flor-principal {
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 220px;
+
+    left: 50%;
+
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+}
+
+
+/* tallo */
+
+.tallo-principal {
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 175px;
+
+    left: 48px;
+
+    bottom: 0;
+
+    border-radius: 10px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #365b17,
+            #9bbd35,
+            #315215
+        );
+
+    transform-origin: bottom;
+
+    animation: crecerTallo 2.5s ease-out;
+
+}
+
+
+@keyframes crecerTallo {
+
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 175px;
+    }
+
+}
+
+
+/* =========================================
+   HOJAS FLOR
+========================================= */
+
+.hoja-principal {
+
+    position: absolute;
+
+    width: 45px;
+
+    height: 22px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #a6c238,
+            #49751c
+        );
+
+    border-radius: 100% 0 100% 0;
+
+    transform-origin: center;
+
+}
+
+
+.hoja-a {
+
+    left: 4px;
+
+    bottom: 65px;
+
+    transform: rotate(25deg);
+
+    animation: hojaA 1.5s ease-out;
+
+}
+
+
+.hoja-b {
+
+    right: 3px;
+
+    bottom: 105px;
+
+    transform: rotate(-30deg);
+
+    animation: hojaB 1.5s ease-out;
+
+}
+
+
+@keyframes hojaA {
+
+    from {
+        transform: rotate(25deg) scale(0);
+    }
+
+    to {
+        transform: rotate(25deg) scale(1);
+    }
+
+}
+
+
+@keyframes hojaB {
+
+    from {
+        transform: rotate(-30deg) scale(0);
+    }
+
+    to {
+        transform: rotate(-30deg) scale(1);
+    }
+
+}
+
+
+/* =========================================
+   CABEZA
+========================================= */
+
+.cabeza-flor {
+
+    position: absolute;
+
+    width: 75px;
+
+    height: 75px;
+
+    left: 12px;
+
+    top: 20px;
+
+    animation:
+
+        aparecerFlor 2s ease-out,
+
+        balancear 4s infinite ease-in-out 2s;
+
+}
+
+
+@keyframes aparecerFlor {
+
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes balancear {
+
+    0%,100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(4deg) translateY(-3px);
+    }
+
+}
+
+
+/* =========================================
+   PETALOS
+========================================= */
+
+.petalo-flor {
+
+    position: absolute;
+
+    width: 40px;
+
+    height: 22px;
+
+    left: 18px;
+
+    top: 27px;
+
+    border-radius:
+
+        80%
+        20%
+        80%
+        20%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fff46c,
+            #ffd000 60%,
+            #ed9900
+        );
+
+    transform-origin:
+
+        20px
+        11px;
+
+    box-shadow:
+
+        0 0 7px
+        rgba(255,210,0,.8);
+
+}
+
+
+/* ocho pétalos */
+
+.pf1 {
+    transform: rotate(0deg) translateX(18px);
+}
+
+.pf2 {
+    transform: rotate(45deg) translateX(18px);
+}
+
+.pf3 {
+    transform: rotate(90deg) translateX(18px);
+}
+
+.pf4 {
+    transform: rotate(135deg) translateX(18px);
+}
+
+.pf5 {
+    transform: rotate(180deg) translateX(18px);
+}
+
+.pf6 {
+    transform: rotate(225deg) translateX(18px);
+}
+
+.pf7 {
+    transform: rotate(270deg) translateX(18px);
+}
+
+.pf8 {
+    transform: rotate(315deg) translateX(18px);
+}
+
+
+/* centro */
+
+.centro-flor {
+
+    position: absolute;
+
+    width: 27px;
+
+    height: 27px;
+
+    left: 24px;
+
+    top: 24px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #8a4913,
+            #341207
+        );
+
+    box-shadow:
+
+        0 0 8px #c17b00;
+
+    z-index: 5;
+
+}
+
+
+/* =========================================
+   PARTICULAS
+========================================= */
+
+.particula {
+
+    position: absolute;
+
+    color: #ffd800;
+
+    animation: particula 3s infinite ease-in-out;
+
+}
+
+
+.p1 {
+
+    top: 90px;
+
+    left: 25px;
+
+}
+
+
+.p2 {
+
+    top: 140px;
+
+    right: 20px;
+
+}
+
+
+.p3 {
+
+    top: 190px;
+
+    left: 35px;
+
+}
+
+
+@keyframes particula {
+
+    0%,100% {
+
+        opacity: .1;
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: translateY(-10px);
+
+    }
+
+}
+
+
+/* =========================================
+   BASE
+========================================= */
+
+.base-campana {
+
+    position: absolute;
+
+    width: 225px;
+
+    height: 45px;
+
+    left: 50%;
+
+    bottom: 48px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            #a75b1c,
+            #43180b 70%
+        );
+
+    box-shadow:
+
+        0 0 20px
+        rgba(255,180,30,.25);
+
+}
+
+
+.base-campana::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+
+    height: 18px;
+
+    left: 50%;
+
+    top: 8px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #d49525;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(255,210,50,.5);
+
+}
+
+
+/* sombra */
+
+.sombra {
+
+    position: absolute;
+
+    width: 260px;
+
+    height: 25px;
+
+    left: 50%;
+
+    bottom: 38px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.5);
+
+    filter: blur(8px);
+
+    z-index: -1;
+
+}
+
+
+/* =========================================
+   BOTÓN CARTA
+========================================= */
+
+#leerCarta {
+
+    padding: 12px 32px;
+
+    border: 2px solid #ffd400;
+
+    border-radius: 30px;
+
+    background: rgba(0,0,0,.5);
+
+    color: #ffd400;
+
+    font-family: cursive;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 10px #ffd400;
+
+    transition: .3s;
+
+}
+
+
+#leerCarta:hover {
+
+    background: #ffd400;
+
+    color: #281000;
+
+    transform: scale(1.08);
+
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+#carta {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px;
+
+    background:
+
+        rgba(0,0,0,.82);
+
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .7s;
+
+    z-index: 100;
+
+}
+
+
+#carta.mostrar {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* =========================================
+   PAPEL
+========================================= */
+
+.papel {
+
+    position: relative;
+
+    width: min(400px, 94vw);
+
+    min-height: 650px;
+
+    padding: 30px 28px 0;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 20%,
+            #fffbdc,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff9d9,
+            #f8d86c
+        );
+
+    border: 2px solid #dba72c;
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,205,40,.65);
+
+    transform:
+
+        translateY(100px)
+        scale(.7)
+        rotate(-3deg);
+
+    transition: .7s;
+
+}
+
+
+#carta.mostrar .papel {
+
+    transform:
+
+        translateY(0)
+        scale(1)
+        rotate(0);
+
+}
+
+
+/* =========================================
+   CERRAR
+========================================= */
+
+#cerrar {
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 5px;
+
+    border: none;
+
+    background: none;
+
+    color: #74551b;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    z-index: 30;
+
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.decoracion-superior {
+
+    color: #c39422;
+
+    margin-bottom: 5px;
+
+}
+
+
+.papel h3 {
+
+    color: #5a4630;
+
+    font-family: cursive;
+
+    font-size: 36px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.texto-carta p {
+
+    color: #4d4233;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    margin-bottom: 9px;
+
+}
+
+
+.papel h4 {
+
+    color: #51412d;
+
+    font-family: cursive;
+
+    font-size: 27px;
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================================
+   RAMO
+========================================= */
+
+.ramo {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 15px;
+
+    transform: translateX(-50%);
+
+    width: 300px;
+
+    height: 220px;
+
+}
+
+
+/* =========================================
+   TALLOS RAMO
+========================================= */
+
+.tallo-ramo {
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 145px;
+
+    left: 50%;
+
+    bottom: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #365c18,
+            #79a82b,
+            #355a17
+        );
+
+    border-radius: 10px;
+
+    transform-origin: bottom;
+
+}
+
+
+.tr1 {
+    transform: rotate(-30deg);
+}
+
+.tr2 {
+    transform: rotate(-20deg);
+}
+
+.tr3 {
+    transform: rotate(-10deg);
+}
+
+.tr4 {
+    transform: rotate(8deg);
+}
+
+.tr5 {
+    transform: rotate(20deg);
+}
+
+.tr6 {
+    transform: rotate(30deg);
+}
+
+
+/* =========================================
+   HOJAS RAMO
+========================================= */
+
+.hoja-ramo {
+
+    position: absolute;
+
+    width: 60px;
+
+    height: 30px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #a9c63c,
+            #4a761b
+        );
+
+    border-radius:
+
+        100%
+        0
+        100%
+        0;
+
+    z-index: 2;
+
+}
+
+
+.hr1 {
+
+    left: 35px;
+
+    bottom: 30px;
+
+    transform: rotate(-30deg);
+
+}
+
+
+.hr2 {
+
+    left: 70px;
+
+    bottom: 60px;
+
+    transform: rotate(25deg);
+
+}
+
+
+.hr3 {
+
+    left: 110px;
+
+    bottom: 25px;
+
+    transform: rotate(-15deg);
+
+}
+
+
+.hr4 {
+
+    right: 25px;
+
+    bottom: 35px;
+
+    transform: rotate(30deg);
+
+}
+
+
+.hr5 {
+
+    right: 60px;
+
+    bottom: 65px;
+
+    transform: rotate(-25deg);
+
+}
+
+
+.hr6 {
+
+    left: 135px;
+
+    bottom: 75px;
+
+    transform: rotate(20deg);
+
+}
+
+
+.hr7 {
+
+    right: 105px;
+
+    bottom: 20px;
+
+    transform: rotate(-35deg);
+
+}
+
+
+/* =========================================
+   GIRASOLES
+========================================= */
+
+.girasol {
+
+    position: absolute;
+
+    width: 72px;
+
+    height: 72px;
+
+    border-radius: 50%;
+
+    background:
+
+        repeating-conic-gradient(
+            #ffd400 0deg 12deg,
+            #f3a900 12deg 24deg
+        );
+
+    box-shadow:
+
+        0 2px 5px rgba(80,40,0,.3);
+
+    animation: crecerRamo .8s ease backwards;
+
+}
+
+
+.centro-girasol {
+
+    position: absolute;
+
+    width: 31px;
+
+    height: 31px;
+
+    left: 20px;
+
+    top: 20px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #7c4112,
+            #321106
+        );
+
+    box-shadow:
+
+        inset 0 0 7px #a8661e;
+
+}
+
+
+/* posiciones */
+
+.g1 {
+
+    width: 88px;
+
+    height: 88px;
+
+    left: 106px;
+
+    top: 45px;
+
+    z-index: 5;
+
+    animation-delay: .2s;
+
+}
+
+
+.g1 .centro-girasol {
+
+    left: 28px;
+
+    top: 28px;
+
+}
+
+
+.g2 {
+
+    left: 35px;
+
+    top: 75px;
+
+    transform: scale(.75);
+
+    animation-delay: .4s;
+
+}
+
+
+.g3 {
+
+    right: 35px;
+
+    top: 70px;
+
+    transform: scale(.75);
+
+    animation-delay: .5s;
+
+}
+
+
+.g4 {
+
+    left: 70px;
+
+    top: 25px;
+
+    transform: scale(.55);
+
+    animation-delay: .6s;
+
+}
+
+
+.g5 {
+
+    right: 70px;
+
+    top: 25px;
+
+    transform: scale(.55);
+
+    animation-delay: .7s;
+
+}
+
+
+.g6 {
+
+    left: 112px;
+
+    top: 5px;
+
+    transform: scale(.5);
+
+    animation-delay: .8s;
+
+}
+
+
+@keyframes crecerRamo {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================
+   PARA TI
+========================================= */
+
+.para-ti {
+
+    position: absolute;
+
+    bottom: 2px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #5d4625;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   MÓVIL
+========================================= */
+
+@media (max-width: 500px) {
+
+
+    .titulo {
+
+        margin-top: 25px;
+
+        font-size: 43px;
+
+    }
+
+
+    .escena {
+
+        transform: scale(.85);
+
+        margin-top: -15px;
+
+        margin-bottom: -35px;
+
+    }
+
+
+    .papel {
+
+        min-height: 620px;
+
+        padding-left: 25px;
+
+        padding-right: 25px;
+
+    }
+
+
+    .papel h3 {
+
+        font-size: 32px;
+
+    }
+
+
+    .texto-carta p {
+
+        font-size: 11px;
+
+    }
+
+
+    .ramo {
+
+        transform:
+
+            translateX(-50%)
+            scale(.82);
+
+        transform-origin: bottom center;
+
+    }
+
+}
+/* =========================
+   RAMO DE GIRASOLES
+========================= */
+
+.ramo-nuevo {
+    position: relative;
+    width: 330px;
+    height: 270px;
+    margin: 25px auto 0;
+}
+
+/* TALLos */
+
+.tallo {
+    position: absolute;
+    bottom: 35px;
+    width: 6px;
+    height: 180px;
+    background: linear-gradient(to right, #3b8d35, #75c957, #347d30);
+    border-radius: 10px;
+    transform-origin: bottom;
+}
+
+.t1 {
+    left: 162px;
+    transform: rotate(-18deg);
+}
+
+.t2 {
+    left: 160px;
+    transform: rotate(-9deg);
+}
+
+.t3 {
+    left: 162px;
+}
+
+.t4 {
+    left: 165px;
+    transform: rotate(10deg);
+}
+
+.t5 {
+    left: 168px;
+    transform: rotate(20deg);
+}
+
+
+/* HOJAS */
+
+.hoja {
+    position: absolute;
+    width: 65px;
+    height: 30px;
+    background: linear-gradient(135deg, #72c84d, #2e8537);
+    border-radius: 100% 0 100% 0;
+    transform-origin: center;
+}
+
+.hoja::after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 2px;
+    background: rgba(255,255,255,.35);
+    top: 50%;
+    left: 10px;
+    transform: rotate(-8deg);
+}
+
+.h1 {
+    left: 85px;
+    bottom: 75px;
+    transform: rotate(-28deg);
+}
+
+.h2 {
+    left: 185px;
+    bottom: 95px;
+    transform: rotate(30deg);
+}
+
+.h3 {
+    left: 65px;
+    bottom: 115px;
+    transform: rotate(-38deg);
+}
+
+.h4 {
+    left: 200px;
+    bottom: 55px;
+    transform: rotate(38deg);
+}
+
+.h5 {
+    left: 125px;
+    bottom: 48px;
+    transform: rotate(15deg);
+}
+
+
+/* GIRASOLES */
+
+.girasol {
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    transform-origin: center bottom;
+    animation: moverFlor 4s ease-in-out infinite;
+}
+
+/* posiciones */
+
+.g1 {
+    left: 122px;
+    top: 18px;
+    animation-delay: .2s;
+}
+
+.g2 {
+    left: 55px;
+    top: 58px;
+    transform: scale(.78);
+    animation-delay: .8s;
+}
+
+.g3 {
+    left: 185px;
+    top: 55px;
+    transform: scale(.8);
+    animation-delay: 1.1s;
+}
+
+.g4 {
+    left: 92px;
+    top: 82px;
+    transform: scale(.65);
+    animation-delay: 1.5s;
+}
+
+.g5 {
+    left: 170px;
+    top: 88px;
+    transform: scale(.63);
+    animation-delay: 1.9s;
+}
+
+
+/* PÉTALOS */
+
+.petalos {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse 18px 40px at 50% 5%,
+            #ffe95b 0 70%,
+            transparent 72%
+        );
+
+    filter: drop-shadow(0 2px 2px rgba(120,70,0,.25));
+}
+
+/* crear sensación de muchos pétalos */
+
+.petalos::before,
+.petalos::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse 18px 40px at 50% 5%,
+            #ffd92f 0 70%,
+            transparent 72%
+        );
+}
+
+.petalos::before {
+    transform: rotate(45deg);
+}
+
+.petalos::after {
+    transform: rotate(90deg);
+}
+
+
+/* CENTRO DEL GIRASOL */
+
+.centro {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 24px;
+    top: 24px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 30%, #a86420 0 5%, transparent 6%),
+        radial-gradient(circle at 65% 60%, #6b3515 0 5%, transparent 6%),
+        radial-gradient(circle at 45% 75%, #8b4619 0 5%, transparent 6%),
+        radial-gradient(circle, #754016, #42200d);
+
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,.25),
+        0 2px 4px rgba(0,0,0,.25);
+}
+
+
+/* ENVOLTURA */
+
+.envoltura {
+    position: absolute;
+    bottom: 0;
+    left: 80px;
+
+    width: 175px;
+    height: 80px;
+
+    background: linear-gradient(
+        135deg,
+        #f6d6c7,
+        #fff0e7,
+        #e8b9aa
+    );
+
+    clip-path: polygon(
+        10% 0,
+        90% 0,
+        100% 100%,
+        0 100%
+    );
+
+    border-radius: 8px 8px 25px 25px;
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,.15);
+}
+
+.envoltura::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    top: 22px;
+    left: 0;
+    background: rgba(255,255,255,.5);
+}
+
+
+/* MOVIMIENTO */
+
+@keyframes moverFlor {
+
+    0%,100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
